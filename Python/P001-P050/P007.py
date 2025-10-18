@@ -1,4 +1,4 @@
-from Python.helpers import is_prime
+from Python.helpers import is_prime, find_first_n_primes
 from Python.timer import timer
 
 
@@ -17,4 +17,10 @@ def p007(nth_prime: int) -> int:
     return n - 2
 
 
+@timer
+def p007_helper(nth_prime: int) -> int:
+    return find_first_n_primes(nth_prime)[-1]
+
+
 p007(10_001)
+p007_helper(10_001)
