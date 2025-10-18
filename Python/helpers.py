@@ -29,3 +29,22 @@ def find_first_n_primes(n: int) -> list[int]:
         x += 2
 
     return primes
+
+
+def find_primes_below_n(n: int) -> list[int]:
+    """
+    Returns a list of the primes below `n`.
+    :param n: The maximum value of `n`.
+    :return: The list of primes.
+    """
+    if n <= 2:
+        return []
+
+    primes = [2]
+    x = 3
+    while x < n:
+        if is_prime(x):
+            primes.append(x)
+        x += 2
+
+    return primes

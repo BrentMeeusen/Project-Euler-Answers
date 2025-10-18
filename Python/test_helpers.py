@@ -1,6 +1,6 @@
 import unittest
 
-from Python.helpers import is_prime, find_first_n_primes
+from Python.helpers import is_prime, find_first_n_primes, find_primes_below_n
 
 
 class MyTestCase(unittest.TestCase):
@@ -18,9 +18,16 @@ class MyTestCase(unittest.TestCase):
         n = [0, 1, 2, 5, 10]
         outcomes = [[], [2], [2, 3], [2, 3, 5, 7, 11], [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]]
 
-        for i, n_i in enumerate(n):
-            self.assertEqual(n_i, len(find_first_n_primes(n_i)))
-            self.assertEqual(outcomes[i], find_first_n_primes(n_i))
+        for i, outcome in enumerate(outcomes):
+            self.assertEqual(n[i], len(find_first_n_primes(n[i])))
+            self.assertEqual(outcome, find_first_n_primes(n[i]))
+
+    def test_find_primes_below_n(self):
+        n = [2, 3, 8, 16, 20]
+        outcomes = [[], [2], [2, 3, 5, 7], [2, 3, 5, 7, 11, 13], [2, 3, 5, 7, 11, 13, 17, 19]]
+
+        for i, outcome in enumerate(outcomes):
+            self.assertEqual(outcome, find_primes_below_n(n[i]))
 
 
 if __name__ == '__main__':
