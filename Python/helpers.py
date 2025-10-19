@@ -40,12 +40,25 @@ def find_primes_below_n(n: int) -> list[int]:
     :param n: The maximum value of `n`.
     :return: The list of primes.
     """
-    if n <= 2:
-        return []
+    # Using the sieve of Eratosthenes
+    primes = [True for _ in range(n)]
 
-    primes = [2]
-    for x in range(3, n, 2):
-        if is_prime(x):
-            primes.append(x)
+    x = 2
+    while x ** 2 < n:
+        if primes[x] == True:
+            for i in range(x ** 2, n, x):
+                primes[i] = False
+        x += 1
 
-    return primes
+    return [i for i in range(2, n) if primes[i] == True]
+
+    # My initial, intuitive approach
+    # if n <= 2:
+    #     return []
+    #
+    # primes = [2]
+    # for x in range(3, n, 2):
+    #     if is_prime(x):
+    #         primes.append(x)
+    #
+    # return primes
