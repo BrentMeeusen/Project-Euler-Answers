@@ -1,18 +1,9 @@
+from Python.helpers import find_proper_divisors_of_n
 from Python.timer import timer
 
 
 def d(n: int) -> int:
-    divisors: list[int] = [1]
-
-    x = 2
-    while x * x <= n:
-        if n % x == 0:
-            divisors.append(x)
-            if x * x != n:
-                divisors.append(n // x)
-        x += 1
-
-    return sum(divisors)
+    return sum(find_proper_divisors_of_n(n))
 
 
 @timer

@@ -62,3 +62,22 @@ def find_primes_below_n(n: int) -> list[int]:
     #         primes.append(x)
     #
     # return primes
+
+
+def find_proper_divisors_of_n(n: int) -> list[int]:
+    """
+    Returns a list of the divisors of `n`, excluding `n`.
+    :param n: The number to find the divisors of.
+    :return: The list of divisors.
+    """
+    divisors: list[int] = [1]
+
+    x = 2
+    while x * x <= n:
+        if n % x == 0:
+            divisors.append(x)
+            if x * x != n:
+                divisors.append(n // x)
+        x += 1
+
+    return divisors
