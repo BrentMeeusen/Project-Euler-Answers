@@ -81,3 +81,18 @@ def find_proper_divisors_of_n(n: int) -> list[int]:
         x += 1
 
     return divisors
+
+
+def str_add(a: str, b: str) -> str:
+    ab_sum = ""
+    carry = 0
+
+    if len(b) < len(a):
+        b = "0" * (len(a) - len(b)) + b
+
+    for i in range(len(a)):
+        col_sum = int(a[-i - 1]) + int(b[-i - 1]) + carry
+        ab_sum = str(col_sum % 10) + ab_sum
+        carry = col_sum // 10
+
+    return ("" if carry == 0 else str(carry)) + ab_sum
